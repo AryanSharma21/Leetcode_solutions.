@@ -1,0 +1,44 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int [][] matrix = new int[n][n];
+        if(n==1){
+            matrix[0][0] = 1;
+            return matrix;
+        }
+        int r=0, l=n-1, t=0, b=n-1, dir = 0;
+        int element = 1;
+        while(r<=l && t<=b){
+            if(dir==0){
+                for(int i=r;i<=l;i++){
+                    matrix[r][i] = element;
+                    element++;
+                }
+                t++;
+            }
+            else if(dir==1){
+                for(int i=t;i<=b;i++){
+                    matrix[i][l] = element;
+                    element++;
+                }
+                l--;
+            }
+            else if(dir==2){
+                for(int i =l;i>=r;i--){
+                    matrix[b][i] = element;
+                    element++;
+                }
+                b--;
+            }
+            else if(dir==3){
+                for(int i=b;i>=t;i--){
+                    matrix[i][r] = element;
+                    element++;
+                }
+                r++;
+            }
+            dir=(dir+1)%4;
+            
+        }
+        return matrix;
+    }
+}
