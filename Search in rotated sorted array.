@@ -1,0 +1,43 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        int pivot = findpivot(nums,n);
+        if(target>=nums[pivot] && target<=nums[n-1]){
+            return binarysearch(nums,pivot,n-1,target);
+        }
+        else{
+            return binarysearch(nums,0,pivot-1,target);
+        }
+        
+        
+}
+    static int findpivot(int[]arr,int n){
+        int start = 0;
+        int end = n-1;
+        int mid = start+(end-start)/2;
+        while(start<end){
+            if(arr[mid]>=arr[0]){
+                start = mid+1;
+            }
+            else{
+                end =mid; 
+            }
+            mid = start+(end-start)/2;
+        }
+        return start;
+    }
+    static int binarysearch(int []array ,int start,int end,int target){
+        while(start<=end){
+            int mid = start+(end-start)/2;
+            if(array[mid]==target) return mid;
+            if(array[mid]>target){
+                end = mid-1;
+            }
+            else{
+                start = mid+1;
+            }
+        }
+        return -1;
+    }
+    
+}
