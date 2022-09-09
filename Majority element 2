@@ -5,7 +5,7 @@ class Solution {
         for(int i:nums){
             if (hm.containsKey(i)){
                 hm.put(i,hm.get(i)+1);
-            }
+            }//otherwise
             else{
                 hm.put(i,1);
             }
