@@ -1,0 +1,7 @@
+class Solution {
+	public int countPoints(String rings) {
+		int ans = 0;
+		for(int i=0;i<10;i++)  if(rings.contains("R"+String.valueOf(i)) && rings.contains("G"+String.valueOf(i)) && rings.contains("B"+String.valueOf(i))) ans ++;
+		return ans;
+	}
+}
